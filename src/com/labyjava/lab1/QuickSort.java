@@ -1,20 +1,40 @@
 package com.labyjava.lab1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
+/**
+ * @author Vladyslav Lutsenko
+ * Klasa sortująca dane algorytmem Quick Sort
+ */
 public class QuickSort extends AbstractFloatSorter {
 
+    /**
+     * Metoda zwracająca opis, w którym napisano jaką metodą bylo odsortowaną
+     * @return zwraca String z opisem
+     */
+    @Override
+    String description() {
+        return "Sortuje metodą Quik Sort";
+    }
 
-
-
+    /**
+     *Metoda do sortowania danych zarówno calkowitoliczbowych jak i zmiennoprzecinkowych
+     * @param lista - lista do sortowania
+     * @return zwraca posortowaną listę.
+     */
     @Override
     List<IElement> solveFloatAndInt(List<IElement> lista) {
         quickSort(lista, 0, lista.size()-1);
         return lista;
     }
 
+    /**
+     * Metoda do sortowania algorytmem Quick Sort
+     * @param lista - lista do sortowania
+     * @param low - element początkowy
+     * @param high - element końcowy
+     */
     public static void quickSort(List<IElement> lista, int low, int high){
         if (lista.size() == 0)
             return;
@@ -22,10 +42,10 @@ public class QuickSort extends AbstractFloatSorter {
         if (low >= high)
             return;
 
-        // выбрать опорный элемент
+
         int middle = low + (high - low) / 2;
         float opora = lista.get(middle).getValue();
-        // разделить на подмассивы, который больше и меньше опорного элемента
+
         int i = low, j = high;
         while (i <= j) {
             while (lista.get(i).getValue() < opora) {
@@ -37,7 +57,6 @@ public class QuickSort extends AbstractFloatSorter {
             }
 
             if (i <= j) {
-                //robimy rotacje
                 IElement temp = lista.get(i);
                 lista.set(i, lista.get(j));
                 lista.set(j, temp);
@@ -46,7 +65,6 @@ public class QuickSort extends AbstractFloatSorter {
             }
         }
 
-        //wywolanie rekurcji dla obu czesci(Lewej oraz prawej)
         if (low < j)
             quickSort(lista, low, j);
 

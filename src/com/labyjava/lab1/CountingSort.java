@@ -2,18 +2,29 @@ package com.labyjava.lab1;
 
 import java.util.*;
 
+/**
+ * @author Vladyslav Lutsenko
+ * Klasa sortująca dane algorytmem Counting Sort.
+ */
 public class CountingSort extends AbstractIntSorter {
+    /**
+     * Metoda do sortowania danych calkowitoliczbowych.
+     * @param lista - lista do sortowania
+     * @return zwraca posortowaną listę.
+     */
     @Override
     List<IntElement> solve(List<IntElement> lista) {
         isStable();
 
         List<IntElement> newLista = countSort(lista);
-        for(int i = 0; i < lista.size(); i++){
-            System.out.println(newLista.get(i).value);
-        }
         return newLista;
     }
 
+    /**
+     * metoda sortujaca algorytmem Counting Sort. Jest stabilna.
+     * @param lista - lista do sortowania
+     * @return zwraca posortowaną listę.
+     */
     static List<IntElement> countSort(List<IntElement> lista){
 
         int max = maxValue(lista);
@@ -74,6 +85,11 @@ public class CountingSort extends AbstractIntSorter {
         return lista;
     }
 
+    /**
+     * Metoda do wyznaczenia największego elementu w liscie
+     * @param lista - lista, najwiekszy elementy której chcemy otrzymać
+     * @return zwraca największy element w liscie
+     */
     public static int maxValue(List<IntElement> lista){
         int maxValue = 0;
         Iterator<IntElement> iter = lista.iterator();
@@ -87,7 +103,11 @@ public class CountingSort extends AbstractIntSorter {
         System.out.printf("Max = " + maxValue);
         return maxValue;
     }
-
+    /**
+     * Metoda do wyznaczenia najmniejszego elementu w liscie
+     * @param lista - lista, najmniejszy elementy której chcemy otrzymać
+     * @return zwraca najmniejszy element w liscie
+     */
     public static int minValue(List<IntElement> lista){
         int minValue = 0;
         Iterator<IntElement> iter = lista.iterator();
